@@ -16,6 +16,15 @@ dependencies {
     implementation 'org.testng:testng:7.0.0'
     implementation 'org.seleniumhq.selenium:selenium-java:3.141.59'
 }
+task loginToWiki(type:Test){
+    useTestNG{
+        suites 'src/test/resources/testng.xml'
+    }
+    if (project.hasProperty('browser')){
+        systemProperty 'browser',  "${browser}"
+    }
+}
+
 test{
     useTestNG{
         suites 'src/test/resources/testng.xml'
